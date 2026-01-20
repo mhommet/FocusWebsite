@@ -3,7 +3,7 @@
  */
 
 const GITHUB_REPO = 'mhommet/FocusAPP';
-const GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
+const API_URL = '/api/release';
 
 // DOM Elements
 const downloadBtn = document.getElementById('download-btn');
@@ -15,7 +15,7 @@ const versionInfo = document.getElementById('version-info');
  */
 async function fetchLatestRelease() {
     try {
-        const response = await fetch(GITHUB_API_URL);
+        const response = await fetch(API_URL);
 
         if (!response.ok) {
             throw new Error(`GitHub API error: ${response.status}`);
@@ -87,8 +87,20 @@ function showError() {
 }
 
 /**
+ * Random background on page load
+ */
+function initBackgroundRotation() {
+    const backgrounds = document.querySelectorAll('.hero-bg');
+    if (backgrounds.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    backgrounds[randomIndex].classList.add('active');
+}
+
+/**
  * Initialize on page load
  */
 document.addEventListener('DOMContentLoaded', () => {
     fetchLatestRelease();
+    initBackgroundRotation();
 });

@@ -116,9 +116,36 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--crust) 0%, var(--base) 50%, var(--mantle) 100%);
     position: relative;
     overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+}
+
+.hero-bg.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(17, 17, 27, 0.85) 0%, rgba(30, 30, 46, 0.8) 50%, rgba(24, 24, 37, 0.85) 100%);
+    z-index: 1;
 }
 
 .hero::before {
@@ -141,7 +168,8 @@ body {
 
 .hero-content {
     text-align: center;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
 }
 
 .title {

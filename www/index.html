@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusAPP - League of Legends Statistics</title>
+    <meta name="description" content="Advanced League of Legends statistics tracker. Get optimized builds, champion tierlist, and item gold efficiency calculations.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/mhommet/FocusAPP/main/web/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo"><span class="accent">Focus</span>APP</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="https://github.com/mhommet/FocusAPP" target="_blank">GitHub</a></li>
+                    <li><a href="#download" class="nav-btn">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="title">
+                    <span class="accent">Focus</span>APP
+                </h1>
+                <p class="subtitle">
+                    Advanced League of Legends Statistics Tracker
+                </p>
+                <p class="description">
+                    Get optimized builds, champion tierlist, and item analytics for Diamond+ players
+                </p>
+
+                <!-- Download Button with auto-fetch latest release -->
+                <div id="download" class="download-section">
+                    <button id="download-btn" class="btn-primary" disabled>
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        <span id="download-text">Loading...</span>
+                    </button>
+                    <p class="version" id="version-info">Checking for updates...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Champion Tierlist</h3>
+                    <p>Up-to-date tierlist by role based on Diamond+ data</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>Optimized Builds</h3>
+                    <p>Best builds per champion and role with winrate analysis</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Item Analytics</h3>
+                    <p>Gold efficiency calculations for all League items</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>High Quality Data</h3>
+                    <p>Aggregated from thousands of high-elo games</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <h2 class="section-title">Coming Soon</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Champion Recommendations</h3>
+                    <p>Smart pick suggestions during champion select</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>CS Tracker Overlay</h3>
+                    <p>Live CS/min comparison during games</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Riot Legal -->
+    <footer class="footer">
+        <div class="container">
+            <p class="legal">
+                FocusAPP isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games
+                or anyone officially involved in producing or managing Riot Games properties.
+                Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/mhommet/FocusAPP" target="_blank" class="link">GitHub</a>
+                <a href="https://api.hommet.ch" target="_blank" class="link">API</a>
+            </div>
+            <p class="copyright">
+                © 2026 FocusAPP - Made with ❤️ for the League community
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

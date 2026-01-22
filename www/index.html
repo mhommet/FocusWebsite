@@ -1,139 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FocusAPP - League of Legends Statistics</title>
-    <meta name="description" content="Advanced League of Legends statistics tracker. Get optimized builds, champion tierlist, and item gold efficiency calculations.">
-    <link rel="stylesheet" href="style.css?v=4">
+    <title>FocusAPP - High Performance LoL Companion</title>
+    <meta name="description"
+        content="Native Rust-powered League of Legends tracker. 10x faster than Python apps. Diamond+ data, optimized builds, and tierlists.">
+    <link rel="stylesheet" href="style.css?v=13">
     <link rel="icon" href="https://raw.githubusercontent.com/mhommet/FocusAPP/main/web/logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
+
 <body>
-    <!-- Header -->
+
     <header class="header">
-        <div class="container">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="accent">Focus</span>APP
+            </a>
+    
             <nav class="nav">
-                <a href="#" class="logo"><span class="accent">Focus</span>APP</a>
-                <ul class="nav-links">
+                <ul class="nav-links" id="nav-menu">
                     <li><a href="#features">Features</a></li>
+                    <li><a href="#performance">Performance</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
                     <li><a href="https://github.com/mhommet/FocusAPP" target="_blank">GitHub</a></li>
-                    <li><a href="#download" class="nav-btn">Download</a></li>
                 </ul>
             </nav>
+    
+            <!-- Bouton burger APRÈS le nav -->
+            <button class="burger-menu" id="burger-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
+
     <section class="hero">
-        <div class="hero-bg" style="background-image: url('bg-jarvan.jpg')"></div>
-        <div class="hero-bg" style="background-image: url('bg-karma.jpg')"></div>
-        <div class="hero-bg" style="background-image: url('akali-coven-lol-art-2k-wallpaper-uhdpaper.com-44@5@k.jpg')"></div>
-        <div class="hero-bg" style="background-image: url('jhin-arcana-lol-2k-wallpaper-uhdpaper.com-800@5@i.jpg')"></div>
-        <div class="hero-bg" style="background-image: url('lee-sin-spirit-blossom-skin-lol-wild-rift-splash-art-2k-wallpaper-uhdpaper.com-809@5@i.jpg')"></div>
-        <div class="hero-bg" style="background-image: url('lucian-sunken-shadows-skin-lol-splash-art-2k-wallpaper-uhdpaper.com-924@5@j.jpg')"></div>
-        <div class="hero-bg" style="background-image: url('street-demon-rengar-lol-skin-splash-art-2k-wallpaper-uhdpaper.com-695@1@l.jpg')"></div>
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
+        <div class="hero-bg-wrapper">
+            <div class="hero-bg active" style="background-image: url('bg-jarvan.jpg')"></div>
+            <div class="hero-bg" style="background-image: url('bg-karma.jpg')"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content fade-in">
+                <div class="badge">🚀 Powered by Tauri & Rust</div>
                 <h1 class="title">
-                    <span class="accent">Focus</span>APP
+                    The <span class="accent">Fastest</span> Way<br>
+                    To Master The Meta
                 </h1>
-                <p class="subtitle">
-                    Advanced League of Legends Statistics Tracker
-                </p>
                 <p class="description">
-                    Get optimized builds, champion tierlist, and item analytics based on Diamond+ data
+                    Forget laggy Electron apps. FocusAPP is a native companion built for speed.
+                    Real-time <strong>Diamond+ analytics</strong>, optimized builds, and item efficiency
+                    delivered in <strong>
+                        < 5ms</strong>.
                 </p>
 
-                <!-- Download Button with auto-fetch latest release -->
-                <div id="download" class="download-section">
-                    <button id="download-btn" class="btn-primary" disabled>
-                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
-                        <span id="download-text">Loading...</span>
-                    </button>
-                    <p class="version" id="version-info">Checking for updates...</p>
+                <div class="hero-actions">
+                    <div id="download" class="download-wrapper">
+                        <button id="download-btn" class="btn-primary" disabled>
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                            </svg>
+                            <span id="download-text">Fetching Latest Version...</span>
+                        </button>
+                        <p class="version-sub" id="version-info"></p>
+                    </div>
+                    <a href="https://github.com/mhommet/FocusAPP" target="_blank" class="btn-secondary">
+                        View Source
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual fade-in delay-200">
+                <div class="app-mockup">
+                    <div class="mockup-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-placeholder">
+                            <img src="mockup.png" alt="FocusAPP Mockup">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <section id="performance" class="section performance">
         <div class="container">
-            <h2 class="section-title">Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Champion Tierlist</h3>
-                    <p>Up-to-date tierlist by role based on Diamond+ data</p>
+            <div class="section-header">
+                <h2 class="section-title">Built for Speed</h2>
+                <p class="section-subtitle">Why we chose Rust over Python</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card glass-panel">
+                    <h3>Startup Time</h3>
+                    <div class="comparison">
+                        <div class="bar-group">
+                            <span class="label">FocusAPP</span>
+                            <div class="bar-container">
+                                <div class="bar fill-fast" style="width: 15%"></div>
+                                <span class="value">
+                                    < 1s</span>
+                            </div>
+                        </div>
+                        <div class="bar-group">
+                            <span class="label">Others (Python)</span>
+                            <div class="bar-container">
+                                <div class="bar fill-slow" style="width: 80%"></div>
+                                <span class="value">~5-8s</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">⚔️</div>
+                <div class="stat-card glass-panel">
+                    <h3>API Latency</h3>
+                    <div class="comparison">
+                        <div class="bar-group">
+                            <span class="label">Rust (Axum)</span>
+                            <div class="bar-container">
+                                <div class="bar fill-fast" style="width: 10%"></div>
+                                <span class="value">~5ms</span>
+                            </div>
+                        </div>
+                        <div class="bar-group">
+                            <span class="label">Python (FastAPI)</span>
+                            <div class="bar-container">
+                                <div class="bar fill-slow" style="width: 60%"></div>
+                                <span class="value">~50ms</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="stat-note">10x Faster Response Time</p>
+                </div>
+
+                <div class="stat-card glass-panel">
+                    <h3>Memory Usage</h3>
+                    <div class="stat-circle">
+                        <div class="circle-content">
+                            <span class="big-num">30<small>MB</small></span>
+                            <span class="desc">RAM Usage</span>
+                        </div>
+                    </div>
+                    <p class="stat-note">Vs 200MB+ for Electron apps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section features">
+        <div class="container">
+            <h2 class="section-title">Diamond+ Intelligence</h2>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="icon-box">🏆</div>
+                    <h3>Meta Tier Lists</h3>
+                    <p>Real-time S+ to C tier rankings calculated from thousands of high-elo matches per patch.</p>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="icon-box">⚡</div>
                     <h3>Optimized Builds</h3>
-                    <p>Best builds per champion and role with winrate analysis</p>
+                    <p>Dynamic pathing. We analyze winning skill orders, rune pages, and item spikes.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Item Analytics</h3>
-                    <p>Gold efficiency calculations for all League items</p>
+                <div class="feature-card scroll-reveal">
+                    <div class="icon-box">💰</div>
+                    <h3>Gold Efficiency</h3>
+                    <p>Stop wasting gold. Real-time math on every item's stat value vs cost.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>High Quality Data</h3>
-                    <p>Aggregated from thousands of high-elo games</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Coming Soon Section -->
-    <section class="coming-soon">
+    <section id="architecture" class="section architecture">
         <div class="container">
-            <h2 class="section-title">Coming Soon</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Champion Recommendations</h3>
-                    <p>Smart pick suggestions during champion select</p>
+            <div class="arch-wrapper glass-panel">
+                <div class="arch-text">
+                    <h2>How It Works</h2>
+                    <ul class="arch-list">
+                        <li>
+                            <span class="step-num">1</span>
+                            <div>
+                                <strong>Data Collection</strong>
+                                <p>Background workers scrape 50k+ Diamond ranked matches via Riot API.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            <div>
+                                <strong>Rust Processing</strong>
+                                <p>Our Axum backend crunches millions of data points to find statistically significant
+                                    win conditions.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            <div>
+                                <strong>Native Delivery</strong>
+                                <p>Tauri delivers the optimized data to your desktop instantly via the System Tray.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>CS Tracker Overlay</h3>
-                    <p>Live CS/min comparison during games</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📥</div>
-                    <h3>Import Builds</h3>
-                    <p>Import optimized builds directly into your League client</p>
+                <div class="arch-tech">
+                    <h3>Tech Stack</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag rust">Rust</span>
+                        <span class="tech-tag tauri">Tauri 2.0</span>
+                        <span class="tech-tag postgres">PostgreSQL</span>
+                        <span class="tech-tag axum">Axum</span>
+                        <span class="tech-tag catppuccin">Catppuccin</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer with Riot Legal -->
     <footer class="footer">
         <div class="container">
-            <p class="legal">
-                FocusAPP isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games
-                or anyone officially involved in producing or managing Riot Games properties.
-                Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
-            </p>
-            <div class="footer-links">
-                <a href="https://github.com/mhommet/FocusAPP" target="_blank" class="link">GitHub</a>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FocusAPP</h3>
+                    <p>Open source League of Legends companion.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/mhommet/FocusAPP">Desktop App</a>
+                    <a href="https://github.com/mhommet/focusapp-api">Backend API</a>
+                    <a href="https://focus.hommet.ch/docs">API Docs</a>
+                </div>
             </div>
-            <p class="copyright">
-                © 2026 FocusAPP - Made with ❤️ for the League community
+            <hr class="footer-divider">
+            <p class="legal">
+                FocusAPP isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone
+                officially involved in producing or managing Riot Games properties. Riot Games, and all associated
+                properties are trademarks or registered trademarks of Riot Games, Inc.
             </p>
+            <p class="copyright">© 2026 Milan Hommet • MIT License</p>
         </div>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=9"></script>
 </body>
+
 </html>

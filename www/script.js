@@ -32,21 +32,18 @@ const CONFIG = {
 // DOM READY
 // =====================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // initThemeToggle(); // Theme sombre uniquement
     initMobileMenu();
     initBackgroundRotator();
     initCarousel();
-    // initLiveTierlist(); // Disabled
-    fetchGitHubData();
-    fetchLatestRelease();
+    
+    // ✅ CHARGEMENT ASYNCHRONE GitHub EN PARALLÈLE
+    Promise.all([
+        fetchGitHubData(),
+        fetchLatestRelease()
+    ]).catch(console.error);
 
-    // Check if GSAP is loaded (it should be since it's before this script)
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         initGSAPAnimations();
-    } else {
-        // Fallback if GSAP not loaded - add class for CSS animations
-        document.body.classList.add('no-gsap');
-        console.log('GSAP not loaded, using CSS fallback animations');
     }
 });
 
@@ -588,56 +585,124 @@ function getMockTierlist(role) {
 }
 
 // =====================================================
-// GITHUB API
+// GITHUB DATA (Stars, Forks)
 // =====================================================
 async function fetchGitHubData() {
-    const starsEl = document.getElementById('github-stars');
-    const forksEl = document.getElementById('github-forks');
-
-    if (!starsEl && !forksEl) return;
-
     try {
-        const response = await fetch(CONFIG.github.apiUrl);
-        if (!response.ok) throw new Error('GitHub API error');
+        const [repoResponse, stargazersResponse] = await Promise.all([
+            fetch(`${CONFIG.github.apiUrl}`, {
+                headers: { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'FocusApp-Landing' }
+            }),
+            fetch(`${CONFIG.github.apiUrl}/stargazers`, {
+                headers: { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'FocusApp-Landing' }
+            })
+        ]);
 
-        const data = await response.json();
+        const repo = await repoResponse.json();
+        const stars = repo.stargazers_count;
+        const forks = repo.forks_count;
 
-        if (starsEl) starsEl.textContent = formatNumber(data.stargazers_count);
-        if (forksEl) forksEl.textContent = formatNumber(data.forks_count);
+        // Mise à jour des compteurs
+        const starsEl = document.getElementById('github-stars');
+        const forksEl = document.getElementById('github-forks');
+        
+        if (starsEl) starsEl.textContent = stars.toLocaleString();
+        if (forksEl) forksEl.textContent = forks.toLocaleString();
+
+        console.log(`⭐ ${stars} stars, 🍴 ${forks} forks`);
     } catch (error) {
         console.warn('Failed to fetch GitHub data:', error);
-        if (starsEl) starsEl.textContent = '--';
-        if (forksEl) forksEl.textContent = '--';
     }
 }
 
+// =====================================================
+// GITHUB LATEST RELEASE
+// =====================================================
 async function fetchLatestRelease() {
-    const downloadBtn = document.getElementById('download-windows');
-    const versionEl = document.getElementById('windows-version');
-
-    if (!downloadBtn) return;
-
     try {
-        const response = await fetch(`${CONFIG.github.apiUrl}/releases/latest`);
-        if (!response.ok) throw new Error('API Error');
-
-        const data = await response.json();
-        const exeAsset = data.assets.find(a => a.name.endsWith('.exe'));
-
-        if (exeAsset) {
-            downloadBtn.href = exeAsset.browser_download_url;
-            if (versionEl) {
-                const sizeMB = (exeAsset.size / (1024 * 1024)).toFixed(1);
-                versionEl.textContent = `${data.tag_name} (${sizeMB} MB)`;
+        const response = await fetch(
+            `${CONFIG.github.apiUrl}/releases/latest`,
+            {
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'FocusApp-Landing'
+                }
             }
-        } else {
-            downloadBtn.href = `https://github.com/${CONFIG.github.repo}/releases`;
+        );
+
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
         }
+
+        const release = await response.json();
+        const version = release.tag_name.replace(/^v/i, ''); // "v1.5.3" -> "1.5.3"
+        const releaseDate = new Date(release.published_at).toLocaleDateString('fr-FR', {
+            month: 'long',
+            year: 'numeric'
+        });
+
+        // ✅ MISE À JOUR DES ÉLÉMENTS HTML
+        updateVersionElements(version);
+        updateChangelogFeatured(version, releaseDate);
+        updateDownloadButton(version);
+
+        console.log(`✅ Latest release: v${version} (${releaseDate})`);
+        return { version, releaseDate };
+
     } catch (error) {
-        console.warn('Failed to fetch latest release:', error);
-        downloadBtn.href = `https://github.com/${CONFIG.github.repo}/releases`;
+        console.warn('❌ Failed to fetch latest release:', error);
+        
+        // Fallback vers v1.5.3 si GitHub API échoue
+        updateVersionElements('1.5.3');
+        updateChangelogFeatured('1.5.3', 'Janvier 2026');
+        
+        return null;
     }
 }
+
+// Fonctions utilitaires pour mettre à jour les éléments
+function updateVersionElements(version) {
+    // Bouton Download Hero
+    const heroDownloadBtn = document.querySelector('.hero-actions .btn-primary');
+    if (heroDownloadBtn) {
+        heroDownloadBtn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Download v${version}
+        `;
+    }
+
+    // Mockup titre
+    const mockupTitle = document.querySelector('.mockup-title');
+    if (mockupTitle) {
+        mockupTitle.textContent = `FocusApp v${version}`;
+    }
+
+    // Bouton Download Section
+    const windowsVersion = document.getElementById('windows-version');
+    if (windowsVersion) {
+        windowsVersion.textContent = `v${version}`;
+    }
+}
+
+function updateChangelogFeatured(version, date) {
+    const featuredVersion = document.querySelector('.changelog-card.featured .version-number');
+    const featuredDate = document.querySelector('.changelog-card.featured .version-date');
+    
+    if (featuredVersion) featuredVersion.textContent = `v${version}`;
+    if (featuredDate) featuredDate.textContent = date;
+}
+
+function updateDownloadButton(version) {
+    // Tu peux aussi updater l'URL de téléchargement si tu génères les assets
+    const downloadBtn = document.getElementById('download-windows');
+    if (downloadBtn && version !== '1.5.3') {
+        // Exemple: downloadBtn.href = `https://github.com/mhommet/FocusAPP/releases/download/v${version}/FocusApp-${version}-x64-setup.exe`;
+        downloadBtn.dataset.version = version;
+    }
+}
+
 
 function formatNumber(num) {
     if (num >= 1000) {

@@ -29,7 +29,6 @@
 ### ⚙️ Backend API (Rust/Axum)
 **High-performance REST API powering the desktop app.**
 
-- **Repository**: [focusapp-api](https://github.com/mhommet/focusapp-api)
 - **Technology**: Rust, Axum, PostgreSQL
 - **Performance**: ~10x faster than Python FastAPI
 - **Scale**: Handles 50,000+ requests/hour

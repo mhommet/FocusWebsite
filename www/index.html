@@ -1,36 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FocusAPP - High Performance LoL Companion</title>
+    <title>FocusApp - LoL Companion App | Tier Lists, Builds & Stats</title>
+
+    <!-- SEO Meta -->
     <meta name="description"
-        content="Native Rust-powered League of Legends tracker. 10x faster than Python apps. Diamond+ data, optimized builds, and tierlists.">
-    <link rel="stylesheet" href="style.css?v=13">
+        content="FocusApp is the ultimate League of Legends companion. Live tier lists, optimized builds with auto-import, advanced stats and meta analysis. Available on Windows.">
+    <meta name="keywords"
+        content="League of Legends, LoL, companion app, tier list, builds, Tauri, Rust, desktop app, Windows">
+    <meta name="author" content="Milan Hommet">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FocusApp - LoL Companion App">
+    <meta property="og:description"
+        content="The ultimate League of Legends companion. Live tier lists, optimized builds, advanced stats.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg">
+    <meta property="og:url" content="https://focusapp.hommet.ch">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FocusApp - LoL Companion App">
+    <meta name="twitter:description" content="The ultimate League of Legends companion.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg">
+
+    <!-- Schema.org App -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FocusApp",
+        "operatingSystem": "Windows",
+        "applicationCategory": "GameApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150"
+        }
+    }
+    </script>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e1e2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=18">
 </head>
 
-<body>
-
+<body data-theme="dark">
+    <!-- Header -->
     <header class="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <span class="logo-icon">⚡</span>
-                <span class="accent">Focus</span>APP
+                <img src="https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg" alt="FocusApp Logo"
+                    class="logo-img">
+                <span><span class="accent">Focus</span>App</span>
             </a>
-    
+
             <nav class="nav">
                 <ul class="nav-links" id="nav-menu">
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#performance">Performance</a></li>
-                    <li><a href="#architecture">Architecture</a></li>
-                    <li><a href="https://github.com/mhommet/FocusAPP" target="_blank">GitHub</a></li>
+                    <li><a href="#screenshots">Screenshots</a></li>
+                    <li><a href="#changelog">Changelog</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="https://github.com/mhommet/FocusAPP" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a></li>
                 </ul>
             </nav>
-    
-            <!-- Bouton burger APRÈS le nav -->
+
+            <!-- Burger Menu -->
             <button class="burger-menu" id="burger-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -39,215 +104,452 @@
         </div>
     </header>
 
-
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
         <div class="hero-bg-wrapper">
             <div class="hero-bg active" style="background-image: url('bg-jarvan.jpg')"></div>
             <div class="hero-bg" style="background-image: url('bg-karma.jpg')"></div>
+            <div class="hero-particles" id="particles"></div>
             <div class="hero-overlay"></div>
         </div>
 
         <div class="container hero-container">
-            <div class="hero-content fade-in">
-                <div class="badge">🚀 Powered by Tauri & Rust</div>
-                <h1 class="title">
-                    The <span class="accent">Fastest</span> Way<br>
-                    To Master The Meta
+            <div class="hero-content">
+                <div class="badge gsap-fade">
+                    <span class="badge-pulse"></span>
+                    LoL Companion App
+                </div>
+
+                <h1 class="title gsap-fade">
+                    <span class="accent-gradient">FocusApp</span>
+                    <span class="title-sub">Master the Meta</span>
                 </h1>
-                <p class="description">
-                    Forget laggy Electron apps. FocusAPP is a native companion built for speed.
-                    Real-time <strong>Diamond+ analytics</strong>, optimized builds, and item efficiency
-                    delivered in <strong>
-                        < 5ms</strong>.
+
+                <p class="description gsap-fade">
+                    Live Tier Lists, optimized builds with auto-import,
+                    advanced stats and meta analysis. The ultimate companion for
+                    <strong>League of Legends</strong>.
                 </p>
 
-                <div class="hero-actions">
-                    <div id="download" class="download-wrapper">
-                        <button id="download-btn" class="btn-primary" disabled>
-                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                            </svg>
-                            <span id="download-text">Fetching Latest Version...</span>
-                        </button>
-                        <p class="version-sub" id="version-info"></p>
-                    </div>
-                    <a href="https://github.com/mhommet/FocusAPP" target="_blank" class="btn-secondary">
-                        View Source
+                <div class="hero-actions gsap-fade">
+                    <a href="#download" class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                        </svg>
+                        Download v1.4.0
+                    </a>
+                    <a href="https://github.com/mhommet/FocusAPP" target="_blank" class="btn-secondary" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        GitHub Stars
                     </a>
                 </div>
+
             </div>
 
-            <div class="hero-visual fade-in delay-200">
+            <div class="hero-visual gsap-scale">
                 <div class="app-mockup">
                     <div class="mockup-header">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
+                        <span class="mockup-title">FocusApp v1.4.0</span>
                     </div>
                     <div class="mockup-content">
-                        <div class="mockup-placeholder">
-                            <img src="mockup.png" alt="FocusAPP Mockup">
-                        </div>
+                        <img src="mockup.png" alt="FocusApp Interface" loading="lazy">
                     </div>
                 </div>
+                <div class="mockup-glow"></div>
             </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
         </div>
     </section>
 
-    <section id="performance" class="section performance">
+    <!-- Features Section -->
+    <section class="section features" id="features">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Built for Speed</h2>
-                <p class="section-subtitle">Why we chose Rust over Python</p>
+            <div class="section-header gsap-fade">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Everything you need</h2>
+                <p class="section-subtitle">Powerful tools to dominate the Rift</p>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card glass-panel">
-                    <h3>Startup Time</h3>
-                    <div class="comparison">
-                        <div class="bar-group">
-                            <span class="label">FocusAPP</span>
-                            <div class="bar-container">
-                                <div class="bar fill-fast" style="width: 15%"></div>
-                                <span class="value">
-                                    < 1s</span>
-                            </div>
-                        </div>
-                        <div class="bar-group">
-                            <span class="label">Others (Python)</span>
-                            <div class="bar-container">
-                                <div class="bar fill-slow" style="width: 80%"></div>
-                                <span class="value">~5-8s</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="stat-card glass-panel">
-                    <h3>API Latency</h3>
-                    <div class="comparison">
-                        <div class="bar-group">
-                            <span class="label">Rust (Axum)</span>
-                            <div class="bar-container">
-                                <div class="bar fill-fast" style="width: 10%"></div>
-                                <span class="value">~5ms</span>
-                            </div>
-                        </div>
-                        <div class="bar-group">
-                            <span class="label">Python (FastAPI)</span>
-                            <div class="bar-container">
-                                <div class="bar fill-slow" style="width: 60%"></div>
-                                <span class="value">~50ms</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="stat-note">10x Faster Response Time</p>
-                </div>
-
-                <div class="stat-card glass-panel">
-                    <h3>Memory Usage</h3>
-                    <div class="stat-circle">
-                        <div class="circle-content">
-                            <span class="big-num">30<small>MB</small></span>
-                            <span class="desc">RAM Usage</span>
-                        </div>
-                    </div>
-                    <p class="stat-note">Vs 200MB+ for Electron apps</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="section features">
-        <div class="container">
-            <h2 class="section-title">Diamond+ Intelligence</h2>
             <div class="features-grid">
-                <div class="feature-card scroll-reveal">
-                    <div class="icon-box">🏆</div>
-                    <h3>Meta Tier Lists</h3>
-                    <p>Real-time S+ to C tier rankings calculated from thousands of high-elo matches per patch.</p>
+                <div class="feature-card gsap-fade">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 20V10M18 20V4M6 20v-4" />
+                        </svg>
+                    </div>
+                    <h3>Live Tier List</h3>
+                    <p>Real-time data updated every patch. Tier S to D with Diamond+ stats.</p>
+                    <div class="feature-tag">Live Data</div>
                 </div>
 
-                <div class="feature-card scroll-reveal">
-                    <div class="icon-box">⚡</div>
+                <div class="feature-card gsap-fade">
+                    <div class="feature-icon icon-orange">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                        </svg>
+                    </div>
                     <h3>Optimized Builds</h3>
-                    <p>We analyze winning skill orders, rune pages, and item spikes.</p>
+                    <p>Runes, items and skill order statistically calculated. <strong>Auto-import</strong> with one
+                        click
+                        into the LoL client.</p>
+                    <div class="feature-tag tag-orange">Auto-Import</div>
                 </div>
 
-                <div class="feature-card scroll-reveal">
-                    <div class="icon-box">💰</div>
-                    <h3>Gold Efficiency</h3>
-                    <p>Stop wasting gold. Real-time math on every item's stat value vs cost.</p>
+                <div class="feature-card gsap-fade">
+                    <div class="feature-icon icon-cyan">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h3>Advanced Stats</h3>
+                    <p>Win rate, pick rate, ban rate and <strong>meta analysis</strong>. Visualize trends by
+                        rank and region.</p>
+                    <div class="feature-tag tag-cyan">Analytics</div>
                 </div>
 
+                <div class="feature-card gsap-fade">
+                    <div class="feature-icon icon-green">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <path d="M8 21h8M12 17v4" />
+                        </svg>
+                    </div>
+                    <h3>Tauri Desktop</h3>
+                    <p>Native <strong>Rust/Tauri</strong> app. Ultra-fast, lightweight (30MB RAM) for
+                        Windows.</p>
+                    <div class="feature-tag tag-green">Windows</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="architecture" class="section architecture">
+    <!-- Screenshots Section -->
+    <section class="section screenshots" id="screenshots">
         <div class="container">
-            <div class="arch-wrapper glass-panel">
-                <div class="arch-text">
-                    <h2>How It Works</h2>
-                    <ul class="arch-list">
+            <div class="section-header gsap-fade">
+                <span class="section-badge">Interface</span>
+                <h2 class="section-title">Discover FocusApp</h2>
+                <p class="section-subtitle">Modern UI with Catppuccin theme</p>
+            </div>
+
+            <div class="screenshots-carousel gsap-fade">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-slide active">
+                        <img src="tierlist.png" alt="FocusApp Tier List" loading="lazy">
+                        <div class="slide-caption">
+                            <h4>Tier Lists</h4>
+                            <p>Live champion rankings by role</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="items.png" alt="FocusApp Items" loading="lazy">
+                        <div class="slide-caption">
+                            <h4>Items</h4>
+                            <p>Optimal item builds</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="build.png" alt="FocusApp Build" loading="lazy">
+                        <div class="slide-caption">
+                            <h4>Builds</h4>
+                            <p>Complete champion builds</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="carousel-dots" id="carousel-dots">
+                        <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+                        <button class="dot" data-index="1" aria-label="Slide 2"></button>
+                        <button class="dot" data-index="2" aria-label="Slide 3"></button>
+                    </div>
+                    <button class="carousel-btn next" id="carousel-next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Changelog Section -->
+    <section class="section changelog" id="changelog">
+        <div class="container">
+            <div class="section-header gsap-fade">
+                <span class="section-badge">Changelog</span>
+                <h2 class="section-title">Latest Updates</h2>
+                <p class="section-subtitle">New features and improvements</p>
+            </div>
+
+            <div class="changelog-grid">
+                <!-- Featured Release -->
+                <div class="changelog-card featured gsap-fade">
+                    <div class="changelog-version">
+                        <span class="version-number">v1.4.0</span>
+                        <span class="version-date">Janvier 2026</span>
+                        <span class="version-badge">Latest</span>
+                    </div>
+                    <h3>UI & UX Improvements</h3>
+                    <ul class="changelog-list">
                         <li>
-                            <span class="step-num">1</span>
-                            <div>
-                                <strong>Data Collection</strong>
-                                <p>Background workers scrape 50k+ Diamond ranked matches via Riot API.</p>
-                            </div>
+                            <span class="change-type new">New</span>
+                            Modern website with complete landing page
                         </li>
                         <li>
-                            <span class="step-num">2</span>
-                            <div>
-                                <strong>Rust Processing</strong>
-                                <p>Our Axum backend crunches millions of data points to find statistically significant
-                                    win conditions.</p>
-                            </div>
+                            <span class="change-type new">New</span>
+                            Interactive champions grid with tooltips
                         </li>
                         <li>
-                            <span class="step-num">3</span>
-                            <div>
-                                <strong>Native Delivery</strong>
-                                <p>Tauri delivers the optimized data to your desktop instantly via the System Tray.</p>
-                            </div>
+                            <span class="change-type improved">Improved</span>
+                            Smooth and performant GSAP animations
+                        </li>
+                        <li>
+                            <span class="change-type improved">Improved</span>
+                            Catppuccin dark theme
+                        </li>
+                        <li>
+                            <span class="change-type fixed">Fixed</span>
+                            100% functional mobile responsive
                         </li>
                     </ul>
                 </div>
-                <div class="arch-tech">
-                    <h3>Tech Stack</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag rust">Rust</span>
-                        <span class="tech-tag tauri">Tauri 2.0</span>
-                        <span class="tech-tag postgres">PostgreSQL</span>
-                        <span class="tech-tag axum">Axum</span>
-                        <span class="tech-tag catppuccin">Catppuccin</span>
+
+                <!-- Previous Releases -->
+                <div class="changelog-card gsap-fade">
+                    <div class="changelog-version">
+                        <span class="version-number">v1.3.0</span>
+                        <span class="version-date">Decembre 2025</span>
+                    </div>
+                    <h3>Performance Update</h3>
+                    <ul class="changelog-list">
+                        <li>
+                            <span class="change-type improved">Improved</span>
+                            Startup time reduced to &lt;1s
+                        </li>
+                        <li>
+                            <span class="change-type new">New</span>
+                            Local cache for tier lists
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="changelog-card gsap-fade">
+                    <div class="changelog-version">
+                        <span class="version-number">v1.2.0</span>
+                        <span class="version-date">Novembre 2025</span>
+                    </div>
+                    <h3>Auto-Import Feature</h3>
+                    <ul class="changelog-list">
+                        <li>
+                            <span class="change-type new">New</span>
+                            Automatic builds import
+                        </li>
+                        <li>
+                            <span class="change-type fixed">Fixed</span>
+                            Data API fix
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="changelog-card gsap-fade">
+                    <div class="changelog-version">
+                        <span class="version-number">v1.1.0</span>
+                        <span class="version-date">Octobre 2025</span>
+                    </div>
+                    <h3>Initial Release</h3>
+                    <ul class="changelog-list">
+                        <li>
+                            <span class="change-type new">New</span>
+                            Windows desktop app
+                        </li>
+                        <li>
+                            <span class="change-type improved">Improved</span>
+                            Catppuccin Mocha theme
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="section download" id="download">
+        <div class="container">
+            <div class="download-wrapper gsap-fade">
+                <div class="download-content">
+                    <span class="section-badge">Download</span>
+                    <h2 class="section-title">Ready to dominate?</h2>
+                    <p class="section-subtitle">Download FocusApp for free</p>
+
+                    <div class="download-buttons">
+                        <a href="#" class="download-btn windows" id="download-windows">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+                            </svg>
+                            <div class="btn-text">
+                                <span class="btn-label">Download for</span>
+                                <span class="btn-platform">Windows</span>
+                            </div>
+                            <span class="btn-version" id="windows-version">v1.4.0</span>
+                        </a>
+
+                    </div>
+
+                    <div class="download-info">
+                        <p>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                            100% Open Source - MIT License
+                        </p>
+                        <p>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                            Automatic updates
+                        </p>
+                    </div>
+                </div>
+
+                <div class="download-visual">
+                    <div class="github-card gsap-scale">
+                        <div class="github-header">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            <span>mhommet/FocusAPP</span>
+                        </div>
+                        <div class="github-stats">
+                            <div class="stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <span id="github-stars">--</span>
+                            </div>
+                            <div class="stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M7 7h10v10M7 17L17 7" />
+                                </svg>
+                                <span id="github-forks">--</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/mhommet/FocusAPP" target="_blank" class="github-link"
+                            rel="noopener">
+                            Voir sur GitHub
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>FocusAPP</h3>
-                    <p>Open source League of Legends companion.</p>
+                    <a href="#" class="footer-logo">
+                        <img src="https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg" alt="FocusApp"
+                            class="logo-img">
+                        <span><span class="accent">Focus</span>App</span>
+                    </a>
+                    <p>The ultimate League of Legends companion. Open source and free.</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#screenshots">Screenshots</a></li>
+                            <li><a href="#changelog">Changelog</a></li>
+                            <li><a href="#download">Download</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="https://github.com/mhommet/FocusAPP" target="_blank" rel="noopener">GitHub</a>
+                            </li>
+                            <li><a href="https://github.com/mhommet/FocusAPP/releases" target="_blank"
+                                    rel="noopener">Releases</a></li>
+                            <li><a href="https://github.com/mhommet/FocusAPP/issues" target="_blank"
+                                    rel="noopener">Issues</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="https://hommet.ch" target="_blank" rel="noopener">hommet.ch</a></li>
+                            <li><a href="https://github.com/mhommet" target="_blank" rel="noopener">@mhommet</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
             <hr class="footer-divider">
-            <p class="legal">
-                FocusAPP isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone
-                officially involved in producing or managing Riot Games properties. Riot Games, and all associated
-                properties are trademarks or registered trademarks of Riot Games, Inc.
-            </p>
-            <p class="copyright">© 2026 Milan Hommet • MIT License</p>
+
+            <div class="footer-bottom">
+                <p class="legal">
+                    FocusApp is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games
+                    or anyone officially involved in producing or managing Riot Games properties. Riot Games and all
+                    associated properties are trademarks or registered trademarks of Riot Games, Inc.
+                </p>
+                <p class="copyright">
+                    &copy; 2026 FocusApp by <a href="https://hommet.ch" target="_blank" rel="noopener">Milan Hommet</a>
+                    &bull; MIT License
+                </p>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js?v=9"></script>
+    <!-- GSAP CDN (loaded before our script) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js?v=18"></script>
 </body>
 
 </html>

@@ -1,0 +1,68 @@
+{
+    "name": "FocusApp - LoL Companion",
+    "short_name": "FocusApp",
+    "description": "Le companion League of Legends ultime. Tier lists live, builds optimises, stats avances.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1e1e2e",
+    "theme_color": "#1e1e2e",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "fr-FR",
+    "categories": ["games", "utilities"],
+    "icons": [
+        {
+            "src": "https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "mockup.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "label": "FocusApp Interface"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "windows",
+            "url": "https://github.com/mhommet/FocusAPP/releases"
+        }
+    ],
+    "prefer_related_applications": false,
+    "shortcuts": [
+        {
+            "name": "Tier List",
+            "short_name": "Tiers",
+            "description": "Voir la tier list actuelle",
+            "url": "/#features",
+            "icons": [
+                {
+                    "src": "https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Download",
+            "short_name": "Download",
+            "description": "Telecharger FocusApp",
+            "url": "/#download",
+            "icons": [
+                {
+                    "src": "https://raw.githubusercontent.com/mhommet/FocusAPP/main/logo.jpg",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}
